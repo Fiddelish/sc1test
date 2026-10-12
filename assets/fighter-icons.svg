@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="country-sweden" viewBox="0 0 32 32">
+    <defs>
+      <clipPath id="fighter-sweden-circle"><circle cx="16" cy="16" r="14"/></clipPath>
+    </defs>
+    <circle cx="16" cy="16" r="14" fill="#006aa7"/>
+    <path d="M12 2v28M2 16h28" stroke="#fecc00" stroke-width="5" clip-path="url(#fighter-sweden-circle)"/>
+  </symbol>
+  <symbol id="globe" viewBox="0 0 32 32">
+    <g fill="none" stroke="currentColor" stroke-width="2.5">
+      <circle cx="16" cy="16" r="13"/>
+      <ellipse cx="16" cy="16" rx="6" ry="13"/>
+      <path d="M3 16h26M5.5 8.5h21M5.5 23.5h21"/>
+    </g>
+  </symbol>
+  <symbol id="height" viewBox="0 0 32 32">
+    <path fill="currentColor" fill-rule="evenodd" d="M8 2h16v4h-4v20h4v4H8v-4h4V6H8V2Zm6 5v2h3V7h-3Zm0 4v2h2v-2h-2Zm0 4v2h3v-2h-3Zm0 4v2h2v-2h-2Zm0 4v2h3v-2h-3Z"/>
+  </symbol>
+  <symbol id="weight" viewBox="0 0 32 32">
+    <path fill="currentColor" fill-rule="evenodd" d="M9 3h5v5h4V3h5v7l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V14l4-4V3Zm6 9v16h2V12h-2Zm-5 2v3h2v-3h-2Zm0 5v3h2v-3h-2Zm0 5v3h2v-3h-2Zm10-10v3h2v-3h-2Zm0 5v3h2v-3h-2Zm0 5v3h2v-3h-2Z"/>
+  </symbol>
+  <symbol id="fist" viewBox="0 0 32 32">
+    <g fill="currentColor">
+      <path d="m10.4 4.4 3.3-1.8 4.6 8-3.3 1.9-4.6-8.1Zm5.3-2.2 3.5-1.1 3.2 8.8-3.5 1.3-3.2-9Zm5.7.6 3.5.3.8 8.1-3.6.5-.7-8.9ZM7 7.5l2.6-1.6 3.9 7-2.9 1.6L7 7.5Z"/>
+      <path d="M7.6 11.7 5 14.4a4 4 0 0 0-.8 4.6L9 27v3h14v-5.1l4.6-10.1a3.3 3.3 0 0 0-1.2-4.1l-1.2-.8.3 3.8-5.2 3.2-9-3.4a2 2 0 0 0-2.5 1.1 2 2 0 0 0 1.1 2.6l5.5 2.2-.7 1.8-5.6-2.2a4 4 0 0 1-2.2-5.3l.7-1.6Z"/>
+    </g>
+  </symbol>
+  <symbol id="affiliation" viewBox="0 0 32 32">
+    <g fill="currentColor">
+      <circle cx="16" cy="7" r="4.5"/>
+      <circle cx="6" cy="11" r="3.3"/>
+      <circle cx="26" cy="11" r="3.3"/>
+      <path d="M9.5 20a6.5 6.5 0 0 1 13 0v10h-13V20ZM1 21a5 5 0 0 1 7.8-4.1A8.8 8.8 0 0 0 7.5 21v9H1v-9Zm30 0a5 5 0 0 0-7.8-4.1 8.8 8.8 0 0 1 1.3 4.1v9H31v-9Z"/>
+    </g>
+  </symbol>
+  <symbol id="record" viewBox="0 0 32 32">
+    <path fill="currentColor" fill-rule="evenodd" d="M8 2h16v3h6v6a7 7 0 0 1-7.2 7 8 8 0 0 1-4.8 3v5h5v4H9v-4h5v-5a8 8 0 0 1-4.8-3A7 7 0 0 1 2 11V5h6V2Zm0 6H5v3a4 4 0 0 0 3.1 3.9L8 13V8Zm16 0v5l-.1 1.9A4 4 0 0 0 27 11V8h-3Zm-8-2-1.5 3-3.3.5 2.4 2.3-.6 3.3 3-1.6 3 1.6-.6-3.3 2.4-2.3-3.3-.5L16 6Z"/>
+  </symbol>
+  <symbol id="love" viewBox="0 0 32 32">
+    <path fill="currentColor" d="M16 29 4.5 17.3C-3.5 9.2 7.3-1.8 16 7 24.7-1.8 35.5 9.2 27.5 17.3L16 29Z"/>
+  </symbol>
+  <symbol id="hate" viewBox="0 0 32 32">
+    <path fill="currentColor" fill-rule="evenodd" d="M16 2C8.3 2 3 7.3 3 14c0 4.6 2.3 7.9 6 9.9V28a2 2 0 0 0 2 2h2v-4h2v4h2v-4h2v4h2a2 2 0 0 0 2-2v-4.1c3.7-2 6-5.3 6-9.9C29 7.3 23.7 2 16 2ZM7 14a4 4 0 1 0 8 0 4 4 0 0 0-8 0Zm10 0a4 4 0 1 0 8 0 4 4 0 0 0-8 0Zm-1 5-3 4h6l-3-4Z"/>
+  </symbol>
+</svg>

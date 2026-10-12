@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="900" viewBox="0 0 800 900">
+  <rect width="800" height="900" rx="40" fill="#101218"/>
+  <rect x="90" y="90" width="620" height="720" rx="34" fill="#161b25" stroke="#f2f2f2" stroke-opacity="0.24" stroke-width="4"/>
+  <rect x="225" y="330" width="350" height="240" rx="34" fill="#f3f3f3" fill-opacity="0.18"/>
+  <path d="M280 340h240v-70c0-66-54-120-120-120s-120 54-120 120z" fill="#f5f5f5" fill-opacity="0.95"/>
+  <rect x="260" y="410" width="280" height="110" rx="20" fill="#d8d8d8" fill-opacity="0.3"/>
+  <text x="400" y="742" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="700" fill="#f9f9f9">SC1 BAG</text>
+</svg>

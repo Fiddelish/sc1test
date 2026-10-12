@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="900" viewBox="0 0 800 900">
+  <rect width="800" height="900" rx="40" fill="#0f1115"/>
+  <rect x="90" y="90" width="620" height="720" rx="34" fill="#171b24" stroke="#f2f2f2" stroke-opacity="0.25" stroke-width="4"/>
+  <rect x="190" y="210" width="420" height="420" rx="32" fill="url(#g)"/>
+  <path d="M260 240h280l-30-70h-90l-30 70h-100z" fill="#f5f5f5" fill-opacity="0.95"/>
+  <path d="M252 300c50 40 130 60 200 60s150-20 198-60" stroke="#ffffff" stroke-opacity="0.7" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <text x="400" y="730" text-anchor="middle" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="#f9f9f9">SC1 TEE</text>
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7b7b7b"/>
+      <stop offset="100%" stop-color="#f0f0f0"/>
+    </linearGradient>
+  </defs>
+</svg>

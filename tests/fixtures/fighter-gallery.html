@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Gallery test fixture — not fighter data</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../fighter-profile.css" />
+    <style>
+      [hidden] { display: none !important; }
+      body { background: #000; }
+      .fighter-profile-wrap { margin-inline: auto; }
+      .fixture-intro { padding-top: 36px; }
+      .fixture-intro h1 { font-size: 1.4rem; }
+      .fixture-spacer { min-height: 640px; padding-top: 36px; color: #aaa; }
+      .profile-section-heading { display: flex; justify-content: space-between; gap: 18px; }
+      .profile-section-heading h2 { margin: 0; }
+    </style>
+  </head>
+  <body data-active-view="fighter-profile">
+    <main class="fighter-profile-page">
+      <div class="fighter-profile-wrap">
+        <header class="fixture-intro">
+          <h1>Gallery test fixture — not fighter data</h1>
+          <p>Six existing local assets for carousel, dialog, keyboard, and scroll-restoration checks. This page is not linked from the site.</p>
+        </header>
+        <div class="fixture-spacer"><p>Scroll down to the gallery before opening a photo to check that closing it preserves the page position.</p></div>
+        <section class="profile-section" aria-labelledby="profile-photos-title">
+          <header class="profile-section-heading">
+            <h2 id="profile-photos-title">Photo gallery</h2>
+            <div class="profile-photo-controls" id="profile-photo-controls" hidden>
+              <button class="profile-gallery-arrow" id="profile-photo-prev" type="button" aria-label="Previous photos" aria-controls="profile-photos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button>
+              <button class="profile-gallery-arrow" id="profile-photo-next" type="button" aria-label="Next photos" aria-controls="profile-photos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button>
+            </div>
+          </header>
+          <div class="profile-photo-track" id="profile-photos" role="region" aria-label="Fighter photo carousel" aria-roledescription="carousel">
+            <button class="profile-photo-trigger" type="button" data-photo-index="0" data-full-src="../../sc1banner.png" aria-label="Open photo 1 of 6: Test photo1" aria-haspopup="dialog"><img class="profile-photo" src="../../sc1banner.png" alt="Test photo1" loading="lazy" decoding="async" /></button>
+            <button class="profile-photo-trigger" type="button" data-photo-index="1" data-full-src="../../shopbanner.png" aria-label="Open photo 2 of 6: Test photo2" aria-haspopup="dialog"><img class="profile-photo" src="../../shopbanner.png" alt="Test photo2" loading="lazy" decoding="async" /></button>
+            <button class="profile-photo-trigger" type="button" data-photo-index="2" data-full-src="../../sc3.jpg" aria-label="Open photo 3 of 6: Test photo3" aria-haspopup="dialog"><img class="profile-photo" src="../../sc3.jpg" alt="Test photo3" loading="lazy" decoding="async" /></button>
+            <button class="profile-photo-trigger" type="button" data-photo-index="3" data-full-src="../../sc1logo.jpg" aria-label="Open photo 4 of 6: Test photo4" aria-haspopup="dialog"><img class="profile-photo" src="../../sc1logo.jpg" alt="Test photo4" loading="lazy" decoding="async" /></button>
+            <button class="profile-photo-trigger" type="button" data-photo-index="4" data-full-src="../../sc1.svg" aria-label="Open photo 5 of 6: Test photo5" aria-haspopup="dialog"><img class="profile-photo" src="../../sc1.svg" alt="Test photo5" loading="lazy" decoding="async" /></button>
+            <button class="profile-photo-trigger" type="button" data-photo-index="5" data-full-src="../../assets/fighters/hawk/testbild.jpeg" aria-label="Open photo 6 of 6: Test photo6" aria-haspopup="dialog"><img class="profile-photo" src="../../assets/fighters/hawk/testbild.jpeg" alt="Test photo6" loading="lazy" decoding="async" /></button>
+          </div>
+        </section>
+        <div class="fixture-spacer"><p>Space below the gallery for scroll-restoration and backdrop-close checks.</p></div>
+      </div>
+    </main>
+    <dialog class="profile-photo-dialog" id="profile-photo-dialog" aria-labelledby="profile-photo-dialog-title">
+      <header class="profile-photo-dialog-header">
+        <h2 id="profile-photo-dialog-title">Photo gallery</h2>
+        <span id="profile-photo-counter" aria-live="polite" aria-atomic="true"></span>
+        <button class="profile-gallery-arrow profile-photo-close" id="profile-photo-close" type="button" aria-label="Close photo" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </header>
+      <div class="profile-photo-stage">
+        <button class="profile-gallery-arrow" id="profile-photo-dialog-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button>
+        <div class="profile-photo-canvas"><img id="profile-photo-expanded" alt="" hidden /><p id="profile-photo-status" role="status" aria-live="polite"></p></div>
+        <button class="profile-gallery-arrow" id="profile-photo-dialog-next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button>
+      </div>
+      <p class="profile-photo-caption" id="profile-photo-caption"></p>
+    </dialog>
+    <script src="../../fighter-gallery.js"></script>
+  </body>
+</html>

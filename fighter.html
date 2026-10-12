@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SC1 Fighter Profile</title>
+		<meta name="description" content="Official SC1 fighter profile, photos and fight videos." />
+		<meta name="theme-color" content="#050505" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="style.css?v=20261012fightercopy1" />
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+		<style>
+			[hidden] { display: none !important; }
+
+			body { background: #050505; }
+
+			.fighter-profile-page {
+				min-height: 100svh;
+				background:
+					radial-gradient(circle at 82% 8%, rgba(211, 39, 47, 0.11), transparent 26%),
+					#050505;
+			}
+
+			.fighter-profile-wrap {
+				width: min(1160px, calc(100vw - 40px));
+				margin: 0 auto;
+			}
+
+			.profile-back {
+				display: inline-flex;
+				align-items: center;
+				gap: 9px;
+				margin: 30px 0 18px;
+				color: #aaa;
+				font-size: 0.68rem;
+				font-weight: 900;
+				letter-spacing: 0.11em;
+				text-decoration: none;
+				text-transform: uppercase;
+			}
+
+			.profile-back:hover,
+			.profile-back:focus-visible { color: #fff; outline: none; }
+
+			.profile-back--hero {
+				position: absolute;
+				top: 24px;
+				left: max(28px, calc((100vw - 1160px) / 2));
+				z-index: 4;
+				margin: 0;
+			}
+
+			.profile-hero {
+				position: relative;
+				width: 100vw;
+				min-height: clamp(520px, 68vh, 720px);
+				margin-left: calc(50% - 50vw);
+				display: grid;
+				grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
+				overflow: hidden;
+				border: 0;
+				box-shadow: none;
+				background:
+					radial-gradient(circle at 78% 34%, rgba(211, 39, 47, 0.18), transparent 24%),
+					linear-gradient(135deg, #111 0%, #080808 64%, #0b0304 100%);
+			}
+
+			.profile-hero::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background: repeating-linear-gradient(90deg, transparent 0 119px, rgba(255, 255, 255, 0.022) 120px);
+				pointer-events: none;
+			}
+
+			.profile-identity,
+			.profile-visual {
+				position: relative;
+				z-index: 1;
+			}
+
+			.profile-identity {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				transform: translateY(-18px);
+				padding:
+					clamp(34px, 5vw, 62px)
+					clamp(28px, 4vw, 58px)
+					clamp(34px, 5vw, 62px)
+					max(28px, calc((100vw - 1160px) / 2));
+			}
+
+			.profile-kicker {
+				margin: 0 0 12px;
+				color: #d3272f;
+				font-size: 0.7rem;
+				font-weight: 900;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+			}
+
+			.profile-name {
+				margin: 0;
+				color: #fff;
+				font-family: "Bebas Neue", Impact, sans-serif;
+				font-size: clamp(5rem, 11vw, 9rem);
+				font-weight: 400;
+				line-height: 0.78;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+			}
+
+			.profile-summary {
+				margin: 20px 0 0;
+				color: #c7c7c7;
+				font-size: 0.68rem;
+				font-weight: 800;
+				letter-spacing: 0.1em;
+				line-height: 1.4;
+				text-transform: uppercase;
+			}
+
+			.profile-summary p {
+				margin: 0;
+			}
+
+			.profile-visual {
+				position: relative;
+				display: grid;
+				place-items: center;
+				min-height: 440px;
+				background: rgba(255, 255, 255, 0.018);
+			}
+
+			.profile-visual::before {
+				content: "";
+				position: absolute;
+				inset: 0 auto 0 0;
+				z-index: 2;
+				width: 30%;
+				background: linear-gradient(90deg, #080808 0%, rgba(8, 8, 8, 0.82) 32%, transparent 100%);
+				pointer-events: none;
+			}
+
+			.profile-monogram {
+				color: transparent;
+				font-family: "Bebas Neue", Impact, sans-serif;
+				font-size: clamp(10rem, 20vw, 17rem);
+				line-height: 0.7;
+				letter-spacing: -0.05em;
+				-webkit-text-stroke: 1px rgba(255, 255, 255, 0.18);
+				text-stroke: 1px rgba(255, 255, 255, 0.18);
+			}
+
+			.profile-portrait {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.profile-stats {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				column-gap: 18px;
+				row-gap: 0;
+				width: min(100%, 690px);
+				margin-top: 20px;
+			}
+
+			.profile-stat {
+				position: relative;
+				min-width: 0;
+				min-height: 46px;
+				display: grid;
+				align-content: center;
+				gap: 4px;
+				padding: 7px 0 7px 13px;
+				overflow: hidden;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+			}
+
+			.profile-stat::before {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 0;
+				width: 5px;
+				height: 5px;
+				border-radius: 50%;
+				background: #d3272f;
+				box-shadow: 0 0 10px rgba(211, 39, 47, 0.45);
+				transform: translateY(-50%);
+			}
+
+			.profile-stat span {
+				color: #717171;
+				font-size: 0.49rem;
+				font-weight: 900;
+				letter-spacing: 0.14em;
+				line-height: 1.2;
+				text-transform: uppercase;
+			}
+
+			.profile-stat strong {
+				overflow: hidden;
+				color: #f4f4f4;
+				font-size: 0.66rem;
+				font-weight: 800;
+				letter-spacing: 0.035em;
+				line-height: 1.2;
+				text-overflow: ellipsis;
+				text-transform: uppercase;
+				white-space: nowrap;
+			}
+
+			.profile-section {
+				padding: clamp(56px, 8vw, 88px) 0 0;
+			}
+
+			.profile-section-heading {
+				display: flex;
+				align-items: end;
+				justify-content: space-between;
+				gap: 24px;
+				margin-bottom: 22px;
+			}
+
+			.profile-section-heading h2 {
+				margin: 0;
+				color: #fff;
+				font-family: "Bebas Neue", Impact, sans-serif;
+				font-size: clamp(2.8rem, 6vw, 5rem);
+				font-weight: 400;
+				line-height: 0.88;
+				letter-spacing: 0.035em;
+				text-transform: uppercase;
+			}
+
+			.profile-section-heading p {
+				max-width: 470px;
+				margin: 0;
+				color: #888;
+				font-size: 0.8rem;
+				line-height: 1.6;
+			}
+
+			.profile-about {
+				padding: 26px;
+				border: 1px solid rgba(255, 255, 255, 0.12);
+				border-left: 3px solid #d3272f;
+				background: #0d0d0d;
+				color: #aaa;
+				font-size: 0.88rem;
+				line-height: 1.75;
+			}
+
+			.profile-about p { margin: 0; }
+
+			.profile-media-grid {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 16px;
+			}
+
+			.profile-media-empty {
+				min-height: 240px;
+				display: grid;
+				place-items: center;
+				padding: 28px;
+				border: 1px solid rgba(255, 255, 255, 0.12);
+				background: #0b0b0b;
+				color: #777;
+				font-size: 0.7rem;
+				font-weight: 800;
+				letter-spacing: 0.12em;
+				text-align: center;
+				text-transform: uppercase;
+			}
+
+			.profile-photo {
+				width: 100%;
+				aspect-ratio: 4 / 5;
+				object-fit: cover;
+				border: 1px solid rgba(255, 255, 255, 0.12);
+			}
+
+			.profile-video-card {
+				overflow: hidden;
+				border: 1px solid rgba(211, 39, 47, 0.46);
+				background: #090909;
+			}
+
+			.profile-video-frame {
+				display: block;
+				width: 100%;
+				aspect-ratio: 16 / 9;
+				border: 0;
+				background: #000;
+			}
+
+			.profile-video-title {
+				margin: 0;
+				padding: 16px 18px;
+				color: #fff;
+				font-size: 0.72rem;
+				font-weight: 800;
+				letter-spacing: 0.055em;
+				line-height: 1.45;
+				text-transform: uppercase;
+			}
+
+			.profile-footer {
+				margin-top: 88px;
+				padding: 28px 0 42px;
+				border-top: 1px solid rgba(255, 255, 255, 0.1);
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 20px;
+				color: #666;
+				font-size: 0.66rem;
+				font-weight: 800;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+			}
+
+			.profile-not-found {
+				min-height: 70vh;
+				display: grid;
+				place-items: center;
+				padding: 60px 20px;
+				text-align: center;
+			}
+
+			.profile-not-found h1 { margin: 0; font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(4rem, 12vw, 8rem); text-transform: uppercase; }
+			.profile-not-found p { color: #888; }
+
+			@media (max-width: 760px) {
+				.fighter-profile-wrap { width: min(100% - 28px, 680px); }
+				.profile-back { margin-top: 22px; }
+				.profile-back--hero { top: 18px; left: 22px; margin: 0; }
+				.profile-hero { grid-template-columns: 1fr; min-height: 0; }
+				.profile-identity { min-height: 0; padding: 72px 22px 30px; transform: none; }
+				.profile-name { font-size: clamp(4.5rem, 24vw, 7rem); }
+				.profile-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 14px; margin-top: 18px; }
+				.profile-stat { min-height: 44px; padding: 6px 0 6px 12px; }
+				.profile-visual {
+					min-height: 260px;
+					border-top: 1px solid rgba(255, 255, 255, 0.1);
+					border-left: 0;
+				}
+				.profile-visual::before {
+					inset: 0 0 auto;
+					width: 100%;
+					height: 24%;
+					background: linear-gradient(180deg, #080808 0%, rgba(8, 8, 8, 0.78) 32%, transparent 100%);
+				}
+				.profile-section-heading { align-items: flex-start; flex-direction: column; }
+				.profile-media-grid { grid-template-columns: 1fr; }
+				.profile-footer { align-items: flex-start; flex-direction: column; }
+			}
+		</style>
+		<link rel="stylesheet" href="fighter-profile.css?v=20261012profile3" />
+    <link rel="stylesheet" href="navigation.css?v=20260930nav5" />
+  </head>
+	<body data-active-view="athletes">
+		<div class="page-shell">
+<div id="sc1-navigation"></div>
+
+			<main class="fighter-profile-page">
+				<div class="fighter-profile-wrap" id="fighter-profile" hidden>
+					<section class="profile-hero" aria-labelledby="profile-name">
+						<a class="profile-back profile-back--hero" href="index.html#athletes">← Back to fighters</a>
+						<div class="profile-identity">
+							<h1 class="profile-name" id="profile-name"></h1>
+							<div class="profile-real-name" id="profile-real-name"><span>Government name</span><strong id="profile-real-name-value">NA</strong></div>
+							<a class="profile-social" id="profile-social" hidden target="_blank" rel="noopener noreferrer">
+								<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="instagram-dot" cx="17.5" cy="6.5" r="1"/></svg>
+								<span id="profile-social-label"></span><span aria-hidden="true">↗</span>
+							</a>
+							<div class="profile-summary" id="profile-summary" hidden>
+								<p id="profile-status"></p>
+							</div>
+						</div>
+						<div class="profile-visual" id="profile-visual"><span class="profile-monogram" id="profile-monogram" aria-hidden="true"></span></div>
+					</section>
+					<div class="profile-overview">
+						<section class="profile-facts-panel" aria-label="Fighter facts and results">
+							<div class="profile-stats" id="profile-stats" aria-label="Fighter information"></div>
+							<div class="profile-results">
+								<section class="profile-win-summary" aria-labelledby="profile-win-title">
+									<div class="profile-win-chart" id="profile-win-chart" role="img" aria-label="Win statistics not available"><div class="profile-win-center" aria-hidden="true"><svg class="profile-blood-drop" viewBox="0 0 24 24" focusable="false"><path d="M12 2.5C10.4 5.9 5.25 11.3 5.25 16.1a6.75 6.75 0 0 0 13.5 0C18.75 11.3 13.6 5.9 12 2.5Z"/></svg></div></div>
+									<div class="profile-win-breakdown"><h2 id="profile-win-title">Win method</h2><ul class="profile-win-legend" id="profile-win-by"></ul></div>
+								</section>
+								<section class="profile-reactions" aria-labelledby="profile-reactions-title"><h2 id="profile-reactions-title">Fan reaction</h2><div id="profile-fan-reaction"></div></section>
+							</div>
+						</section>
+						<section class="profile-signature" aria-labelledby="signature-title">
+							<h2 id="signature-title"><svg class="profile-signature-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="assets/fighter-icons.svg#fist"/></svg>Signature</h2>
+							<p class="profile-signature-subtitle" id="profile-signature-subtitle">HOW THEY FIGHT</p>
+							<p class="profile-signature-copy" id="profile-signature-copy"></p>
+							<p class="profile-known-for"><span>Known for:</span><span id="profile-known-for">NA</span></p>
+						</section>
+					</div>
+
+					<section class="profile-section" aria-labelledby="profile-photos-title">
+						<header class="profile-section-heading">
+							<h2 id="profile-photos-title">Photo gallery</h2>
+							<div class="profile-photo-controls" id="profile-photo-controls" hidden>
+								<button class="profile-gallery-arrow" id="profile-photo-prev" type="button" aria-label="Previous photos" aria-controls="profile-photos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button>
+								<button class="profile-gallery-arrow" id="profile-photo-next" type="button" aria-label="Next photos" aria-controls="profile-photos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button>
+							</div>
+						</header>
+						<div class="profile-photo-track" id="profile-photos" role="region" aria-label="Fighter photo carousel" aria-roledescription="carousel"></div>
+					</section>
+
+					<section class="profile-section" aria-labelledby="profile-videos-title">
+						<header class="profile-section-heading">
+							<h2 id="profile-videos-title">Video gallery</h2>
+							<div class="profile-video-heading-actions">
+								<p>Full fights / Official appearances</p>
+								<div class="profile-photo-controls" id="profile-video-controls" hidden>
+									<button class="profile-gallery-arrow" id="profile-video-prev" type="button" aria-label="Previous videos" aria-controls="profile-videos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button>
+									<button class="profile-gallery-arrow" id="profile-video-next" type="button" aria-label="Next videos" aria-controls="profile-videos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button>
+								</div>
+							</div>
+						</header>
+						<div class="profile-media-grid profile-video-track" id="profile-videos" role="region" aria-label="Fighter video carousel" aria-roledescription="carousel"></div>
+					</section>
+
+					<footer class="profile-footer"><span>One round changes everything</span><a class="profile-back" href="index.html#athletes">Back to fighters ↑</a></footer>
+				</div>
+
+				<section class="profile-not-found" id="profile-not-found" hidden>
+					<div><p class="profile-kicker">SC1 / Fighters</p><h1>Profile not found</h1><p>This fighter profile is not available yet.</p><a class="profile-back" href="index.html#athletes">← Back to fighters</a></div>
+				</section>
+			</main>
+		</div>
+
+		<dialog class="profile-photo-dialog" id="profile-photo-dialog" aria-labelledby="profile-photo-dialog-title">
+			<header class="profile-photo-dialog-header">
+				<h2 id="profile-photo-dialog-title">Photo gallery</h2>
+				<span id="profile-photo-counter" aria-live="polite" aria-atomic="true"></span>
+				<button class="profile-gallery-arrow profile-photo-close" id="profile-photo-close" type="button" aria-label="Close photo" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+			</header>
+			<div class="profile-photo-stage">
+				<button class="profile-gallery-arrow" id="profile-photo-dialog-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button>
+				<div class="profile-photo-canvas"><img id="profile-photo-expanded" alt="" hidden /><p id="profile-photo-status" role="status" aria-live="polite"></p></div>
+				<button class="profile-gallery-arrow" id="profile-photo-dialog-next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button>
+			</div>
+			<p class="profile-photo-caption" id="profile-photo-caption"></p>
+		</dialog>
+
+		<script src="fighters-data.js?v=20261012gallerypreview1"></script>
+		<script>
+			(function initFighterProfile() {
+				function monogram(name) {
+					return (name || "SC1").split(/\s+/).filter(Boolean).slice(0, 2).map(function (part) { return part.charAt(0); }).join("").toUpperCase();
+				}
+
+				function addEmptyState(container, text) {
+					var empty = document.createElement("div");
+					empty.className = "profile-media-empty";
+					empty.textContent = text;
+					container.appendChild(empty);
+				}
+
+				function element(tag, className, text) {
+					var node = document.createElement(tag);
+					node.className = className;
+					if (text !== undefined) node.textContent = text;
+					return node;
+				}
+
+				function icon(name, className) {
+					var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+					svg.setAttribute("class", className);
+					svg.setAttribute("viewBox", "0 0 32 32");
+					svg.setAttribute("aria-hidden", "true");
+					svg.setAttribute("focusable", "false");
+					var use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+					use.setAttribute("href", "assets/fighter-icons.svg#" + name);
+					svg.appendChild(use);
+					return svg;
+				}
+
+				function renderWinStats(fighter) {
+					var values = fighter.winBy || {};
+					var fields = [["koTko", "KO / TKO", "#ff1835"], ["submission", "Submission", "#ffad1f"], ["opponentForfeit", "Opponent forfeit", "#999999"]];
+					function valid(value) { return Number.isSafeInteger(value) && value >= 0; }
+					var complete = fields.every(function (field) { return valid(values[field[0]]); });
+					var total = complete ? fields.reduce(function (sum, field) { return sum + values[field[0]]; }, 0) : 0;
+					var canChart = complete && Number.isSafeInteger(total) && total > 0;
+					var legend = document.getElementById("profile-win-by");
+					var stops = [], position = 0;
+					fields.forEach(function (field) {
+						var count = values[field[0]], share = canChart ? count / total * 100 : 0;
+						var row = element("li", "profile-win-row");
+						var dot = element("span", "profile-win-dot");
+						dot.setAttribute("aria-hidden", "true");
+						dot.style.setProperty("--method-color", field[2]);
+						row.append(dot, element("span", "profile-win-method", field[1]), element("span", "profile-win-percent", canChart ? Math.round(share) + "%" : "NA"), element("span", "profile-win-count", valid(count) ? "(" + count + ")" : "NA"));
+						legend.appendChild(row);
+						if (canChart && count > 0) stops.push(field[2] + " " + position + "% " + (position + share) + "%");
+						position += share;
+					});
+					var chart = document.getElementById("profile-win-chart");
+					chart.style.setProperty("--win-chart", canChart ? "conic-gradient(" + stops.join(", ") + ")" : "#292929");
+					// Parse only an unambiguous wins-losses[-draws] record; never invent totals.
+					var record = String(fighter.record || "").match(/^\s*(\d+)\s*[-–—]\s*(\d+)(?:\s*[-–—]\s*(\d+))?\s*$/);
+					var wins = record ? Number(record[1]) : 0;
+					var fights = record ? wins + Number(record[2]) + Number(record[3] || 0) : 0;
+					var knownRecord = record && Number.isSafeInteger(fights) && fights > 0;
+					var rate = knownRecord ? Math.round(wins / fights * 100) + "%" : "NA";
+					chart.setAttribute("aria-label", (knownRecord ? "Win rate: " + rate + ", " + wins + " wins in " + fights + " fights. " : "Win rate not available. ") + (canChart ? "Win methods: " + fields.map(function (field) { return field[1] + ": " + values[field[0]]; }).join(", ") : "Win method breakdown not available."));
+				}
+
+				function renderReactions(fighter) {
+					var values = fighter.fanReaction || {};
+					var container = document.getElementById("profile-fan-reaction");
+					[["love", "Love"], ["hate", "Hate"]].forEach(function (field) {
+						var value = values[field[0]];
+						var known = Number.isFinite(value) && value >= 0 && value <= 10;
+						var row = element("div", "profile-reaction profile-reaction--" + field[0]);
+						var copy = element("div", "profile-reaction-copy");
+						var line = element("div", "profile-reaction-line");
+						var meter = element("div", "profile-reaction-meter");
+						meter.setAttribute("role", known ? "meter" : "img");
+						meter.setAttribute("aria-label", known ? field[1] : field[1] + ": Not available");
+						if (known) {
+							meter.setAttribute("aria-valuemin", "0"); meter.setAttribute("aria-valuemax", "10"); meter.setAttribute("aria-valuenow", String(value));
+						}
+						for (var i = 0; i < 10; i++) {
+							var segment = element("span", "profile-reaction-segment");
+							segment.setAttribute("aria-hidden", "true");
+							segment.style.setProperty("--segment-fill", (known ? Math.max(0, Math.min(1, value - i)) * 100 : 0) + "%");
+							meter.appendChild(segment);
+						}
+						line.append(meter, element("span", "profile-reaction-value", known ? value + " / 10" : "NA"));
+						copy.append(element("span", "profile-reaction-label", field[1]), line);
+						row.append(icon(field[0], "profile-reaction-icon"), copy);
+						container.appendChild(row);
+					});
+				}
+
+				function renderProfile() {
+					var params = new URLSearchParams(window.location.search);
+					var slug = (params.get("fighter") || "").toLowerCase();
+					var fighters = Array.isArray(window.SC1_FIGHTERS) ? window.SC1_FIGHTERS : [];
+					var fighter = fighters.find(function (item) { return item.slug === slug; });
+					var profile = document.getElementById("fighter-profile");
+					var notFound = document.getElementById("profile-not-found");
+
+					if (!fighter) {
+						notFound.hidden = false;
+						return;
+					}
+
+					document.title = fighter.name + " | SC1 Fighter";
+					document.getElementById("profile-name").textContent = fighter.name;
+					if (fighter.realName) {
+						document.getElementById("profile-real-name").hidden = false;
+						document.getElementById("profile-real-name-value").textContent = fighter.realName;
+					}
+					if (fighter.instagram) {
+						try {
+							var socialUrl = new URL(fighter.instagram);
+							if (socialUrl.protocol === "https:" && /^(www\.)?instagram\.com$/.test(socialUrl.hostname)) {
+								var social = document.getElementById("profile-social");
+								var handle = "@" + socialUrl.pathname.split("/").filter(Boolean)[0];
+								social.href = socialUrl.href;
+								document.getElementById("profile-social-label").textContent = handle;
+								social.setAttribute("aria-label", "Instagram: " + handle + " (opens in a new tab)");
+								social.hidden = false;
+							}
+						} catch (_) { /* Keep invalid social links hidden. */ }
+					}
+					if (fighter.bio) document.getElementById("profile-signature-copy").textContent = fighter.bio;
+					if (fighter.knownFor) document.getElementById("profile-known-for").textContent = fighter.knownFor;
+					renderWinStats(fighter);
+					renderReactions(fighter);
+					var shortInfo = [fighter.nickname].filter(Boolean);
+					document.getElementById("profile-status").textContent = shortInfo.join(" / ");
+					document.getElementById("profile-summary").hidden = shortInfo.length === 0;
+					document.getElementById("profile-monogram").textContent = monogram(fighter.name);
+
+					if (fighter.portrait) {
+						var portrait = document.createElement("img");
+						portrait.className = "profile-portrait";
+						portrait.src = fighter.portrait;
+						portrait.alt = fighter.name + " fighter portrait";
+						document.getElementById("profile-visual").replaceChildren(portrait);
+					}
+
+					var stats = [
+						["Representing", fighter.country, /^(sweden|sverige|se)$/i.test(String(fighter.country || "").trim()) ? "country-sweden" : "globe"],
+						["Height", fighter.height, "height"],
+						["Last fight weight", fighter.weight || fighter.weightClass, "weight"],
+						["Fighting background", fighter.fightingBackground, "fist"],
+						["Affiliation", fighter.affiliation, "affiliation"],
+						["Record", fighter.record, "record"],
+					];
+					var statsContainer = document.getElementById("profile-stats");
+					stats.forEach(function (entry) {
+						var stat = document.createElement("div"); stat.className = "profile-stat";
+						var copy = element("div", "profile-stat-copy");
+						var label = element("span", "profile-stat-label", entry[0]);
+						var value = document.createElement("strong"); value.textContent = entry[1] || "NA";
+						value.title = entry[1] || "Not available";
+						copy.append(label, value); stat.append(icon(entry[2], "profile-stat-icon"), copy); statsContainer.appendChild(stat);
+					});
+
+					var photos = document.getElementById("profile-photos");
+					var galleryPhotos = Array.isArray(fighter.photos) ? fighter.photos.filter(function (photo) { return photo && typeof photo.src === "string" && photo.src.trim(); }) : [];
+					if (!galleryPhotos.length && fighter.portrait) galleryPhotos = [{ src: fighter.portrait, alt: fighter.name + " official portrait" }];
+					if (galleryPhotos.length) {
+						galleryPhotos.forEach(function (photo, index) {
+							var image = document.createElement("img"); image.className = "profile-photo"; image.loading = "lazy"; image.decoding = "async"; image.src = photo.src; image.alt = photo.alt || fighter.name + " SC1 photo";
+							var trigger = element("button", "profile-photo-trigger"); trigger.type = "button";
+							trigger.setAttribute("data-photo-index", String(index));
+							trigger.setAttribute("data-full-src", typeof photo.fullSrc === "string" && photo.fullSrc.trim() ? photo.fullSrc : photo.src);
+							trigger.setAttribute("aria-label", "Open photo " + (index + 1) + " of " + galleryPhotos.length + ": " + image.alt);
+							trigger.setAttribute("aria-haspopup", "dialog");
+							trigger.appendChild(image); photos.appendChild(trigger);
+						});
+					} else { addEmptyState(photos, ""); }
+
+					var videos = document.getElementById("profile-videos");
+					var galleryVideos = Array.isArray(fighter.videos) ? fighter.videos.filter(function (video) { return video && typeof video.youtubeId === "string" && /^[a-zA-Z0-9_-]{11}$/.test(video.youtubeId); }) : [];
+					if (galleryVideos.length) {
+						galleryVideos.forEach(function (video) {
+							var card = document.createElement("article"); card.className = "profile-video-card";
+							var media = element("div", "profile-video-media");
+							var play = element("button", "profile-video-play"); play.type = "button";
+							play.setAttribute("aria-label", "Play " + (video.title || "fight video"));
+							var poster = document.createElement("img"); poster.className = "profile-video-poster"; poster.loading = "lazy"; poster.alt = "";
+							poster.src = "https://i.ytimg.com/vi/" + video.youtubeId + "/hqdefault.jpg";
+							poster.addEventListener("error", function () { poster.hidden = true; }, { once: true });
+							var playIcon = element("span", "profile-video-play-icon"); playIcon.setAttribute("aria-hidden", "true");
+							var triangle = document.createElementNS("http://www.w3.org/2000/svg", "svg"); triangle.setAttribute("viewBox", "0 0 24 24"); triangle.setAttribute("focusable", "false");
+							var trianglePath = document.createElementNS("http://www.w3.org/2000/svg", "path"); trianglePath.setAttribute("d", "M6 3 21 12 6 21Z"); triangle.appendChild(trianglePath); playIcon.appendChild(triangle);
+							play.append(poster, playIcon); media.appendChild(play);
+							play.addEventListener("click", function () {
+								var frame = document.createElement("iframe"); frame.className = "profile-video-frame";
+								frame.src = "https://www.youtube-nocookie.com/embed/" + video.youtubeId + "?autoplay=1&playsinline=1&rel=0";
+								frame.title = video.title || "SC1 fight video"; frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"; frame.allowFullscreen = true;
+								frame.referrerPolicy = "strict-origin-when-cross-origin";
+								media.replaceChildren(frame); frame.focus({ preventScroll: true });
+							}, { once: true });
+							var title = document.createElement("h3"); title.className = "profile-video-title"; title.textContent = video.title;
+							var external = element("a", "profile-video-external", "Watch on YouTube ↗");
+							external.href = "https://www.youtube.com/watch?v=" + video.youtubeId; external.target = "_blank"; external.rel = "noopener noreferrer";
+							external.setAttribute("aria-label", "Watch " + (video.title || "fight video") + " on YouTube (opens in a new tab)");
+							card.append(media, title, external); videos.appendChild(card);
+						});
+					} else { addEmptyState(videos, ""); }
+
+					profile.hidden = false;
+				}
+
+				if (Array.isArray(window.SC1_FIGHTERS)) { renderProfile(); }
+				else { window.addEventListener("sc1:fighters-ready", renderProfile, { once: true }); }
+			})();
+		</script>
+		<script src="sc1-config.js"></script>
+    <script src="navigation.js?v=20260930nav4"></script>
+    <script src="app.js?v=20260930nav2"></script>
+		<script src="fighter-gallery.js?v=20261012videocarousel1"></script>
+	</body>
+</html>

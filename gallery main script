@@ -1,0 +1,375 @@
+
+
+						.event-gallery-section {
+				position: relative;
+				height: var(--gallery-viewport-height);
+				scroll-snap-align: start;
+				overflow: hidden;
+				display: grid;
+				align-items: start;
+			}
+
+			.event-hero-media {
+				position: absolute;
+				inset: 0;
+				z-index: 0;
+			}
+
+			.event-hero-media img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				filter: grayscale(0.15) contrast(1.15) brightness(0.76);
+				transform: scale(1.04);
+				animation: cinematicZoom 13s ease-in-out infinite alternate;
+			}
+
+			.event-overlay {
+				position: absolute;
+				inset: 0;
+				background:
+					linear-gradient(180deg, rgba(8, 8, 8, 0.2) 0%, rgba(8, 8, 8, 0.88) 72%, rgba(8, 8, 8, 0.98) 100%),
+					radial-gradient(circle at 20% 20%, rgba(193, 18, 31, 0.2), transparent 35%);
+				z-index: 1;
+			}
+
+			.event-content {
+				position: relative;
+				z-index: 2;
+				display: grid;
+				gap: 16px;
+				padding: clamp(96px, 12vh, 140px) clamp(22px, 4vw, 56px) clamp(22px, 4vw, 56px);
+				max-width: min(640px, 92vw);
+				opacity: 0;
+				transform: translateY(34px);
+				transition: opacity 0.55s ease, transform 0.55s ease;
+			}
+
+			.event-gallery-section.is-visible .event-content {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.event-gallery-section[data-side="right"] {
+				justify-items: end;
+			}
+
+			.event-gallery-section[data-side="right"] .event-content {
+				text-align: right;
+			}
+
+			.event-kicker {
+				margin: 0;
+				font-size: 0.76rem;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				color: #d8d8d8;
+			}
+
+			.event-title {
+				margin: 0;
+				font-family: "Bebas Neue", Impact, sans-serif;
+				font-size: clamp(3rem, 9vw, 7rem);
+				line-height: 0.88;
+				letter-spacing: 0.04em;
+				color: #fff;
+				text-shadow: 0 10px 26px rgba(0, 0, 0, 0.58);
+			}
+
+			.event-meta {
+				display: inline-grid;
+				grid-template-columns: repeat(3, auto);
+				gap: 8px;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			.event-meta li {
+				padding: 8px 10px;
+				border: 1px solid rgba(255, 255, 255, 0.22);
+				background: rgba(8, 8, 8, 0.55);
+				font-size: 0.73rem;
+				font-weight: 800;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: #f2f2f2;
+			}
+
+			.event-cta {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 46px;
+				padding: 0 22px;
+				border: 1px solid var(--gallery-accent);
+				background: var(--gallery-accent);
+				color: #fff;
+				font-size: 0.8rem;
+				font-weight: 800;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+			}
+
+			.event-cta:hover {
+				transform: translateY(-2px);
+				filter: brightness(1.08);
+				box-shadow: 0 10px 24px rgba(193, 18, 31, 0.34);
+			}
+
+			.event-thumbs {
+				position: absolute;
+				left: clamp(16px, 4vw, 56px);
+				right: clamp(16px, 4vw, 56px);
+				bottom: clamp(16px, 2.2vw, 28px);
+				z-index: 3;
+				display: grid;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				gap: 10px;
+			}
+
+			.event-gallery-section[data-side="right"] .event-thumbs {
+				direction: rtl;
+			}
+
+			.event-thumb {
+				height: clamp(52px, 9vw, 92px);
+				overflow: hidden;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				background: #111;
+			}
+
+			.event-thumb img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				filter: grayscale(0.2) contrast(1.1);
+			}
+
+			@keyframes cinematicZoom {
+				0% {
+					transform: scale(1.03);
+				}
+				100% {
+					transform: scale(1.1);
+				}
+			}
+
+			@media (max-width: 1024px) {
+				.event-content {
+					max-width: min(700px, 92vw);
+				}
+
+				.event-meta {
+					grid-template-columns: repeat(2, auto);
+				}
+			}
+
+			@media (max-width: 760px) {
+				:root {
+					--gallery-nav-offset-mobile: 84px;
+					--gallery-viewport-height: calc(100dvh - var(--gallery-nav-offset-mobile));
+				}
+
+				.gallery-main {
+					height: var(--gallery-viewport-height);
+					margin-top: var(--gallery-nav-offset-mobile);
+				}
+
+				.event-overlay {
+					background:
+						linear-gradient(180deg, rgba(8, 8, 8, 0.3) 0%, rgba(8, 8, 8, 0.78) 54%, rgba(8, 8, 8, 0.97) 100%),
+						radial-gradient(circle at 16% 22%, rgba(193, 18, 31, 0.22), transparent 44%);
+				}
+
+				.event-gallery-section,
+				.event-gallery-section[data-side="right"] {
+					align-items: end;
+					justify-items: stretch;
+				}
+
+				.event-gallery-section[data-side="right"] .event-content {
+					text-align: center;
+				}
+
+				.event-content {
+					display: flex;
+					flex-direction: column;
+					gap: 10px;
+					padding: 22px 16px 18px;
+					max-width: 100%;
+					width: calc(100% - 32px);
+					margin: 0 auto 94px;
+					justify-self: stretch;
+					text-align: center;
+					min-height: 290px;
+					border: 1px solid rgba(255, 255, 255, 0.12);
+					border-radius: 14px;
+					background: linear-gradient(180deg, rgba(14, 14, 14, 0.56), rgba(8, 8, 8, 0.24));
+					box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 14px 30px rgba(0, 0, 0, 0.35);
+					backdrop-filter: blur(3px);
+				}
+
+				.event-kicker {
+					font-size: 0.68rem;
+					letter-spacing: 0.16em;
+				}
+
+				.event-title {
+					font-size: clamp(2.35rem, 12.8vw, 3.8rem);
+					line-height: 0.9;
+					letter-spacing: 0.04em;
+					text-shadow: 0 8px 22px rgba(0, 0, 0, 0.62);
+				}
+
+				.event-meta {
+					grid-template-columns: repeat(3, minmax(0, 1fr));
+					gap: 7px;
+					width: 100%;
+					margin-top: auto;
+				}
+
+				.event-meta li {
+					text-align: center;
+					padding: 8px 6px;
+					font-size: 0.64rem;
+					letter-spacing: 0.08em;
+					border-color: rgba(255, 255, 255, 0.28);
+					background: rgba(8, 8, 8, 0.7);
+				}
+
+				.event-cta {
+					min-height: 44px;
+					padding: 0 16px;
+					font-size: 0.74rem;
+					width: 100%;
+					margin-top: 4px;
+					box-shadow: 0 10px 22px rgba(193, 18, 31, 0.26);
+				}
+
+				.event-thumbs,
+				.event-gallery-section[data-side="right"] .event-thumbs {
+					direction: ltr;
+					left: 16px;
+					right: 16px;
+					grid-template-columns: repeat(4, minmax(0, 1fr));
+					gap: 7px;
+				}
+
+				.event-thumb {
+					height: 62px;
+					border-radius: 8px;
+					border-color: rgba(255, 255, 255, 0.24);
+				}
+			}
+            			.gallery-main {
+				height: var(--gallery-viewport-height);
+				margin-top: var(--gallery-nav-offset-desktop);
+				overflow-y: auto;
+				scroll-snap-type: y mandatory;
+				scroll-behavior: smooth;
+			}
+
+			.gallery-main::-webkit-scrollbar {
+				width: 10px;
+			}
+
+			.gallery-main::-webkit-scrollbar-thumb {
+				background: rgba(255, 255, 255, 0.25);
+			}
+
+            
+            
+            
+            <main id="top" class="gallery-main" aria-label="Event gallery"></main>
+		</div>
+<script>
+			const events = [
+				{
+					title: "BADLANDS",
+					date: "2026",
+					photos: 111,
+					tagline: "No soft rounds. No easy exits. Just hard collisions and championship intent.",
+					image: "sc3.jpg",
+					thumbs: ["sc3.jpg", "sc3.jpg", "sc1logo.jpg", "sc1logo.jpg"],
+					slug: "badlands-card",
+				},
+				{
+					title: "BREAKOUT",
+					date: "2026",
+					photos: 94,
+					tagline: "Young killers, elite pressure, and highlight moments carved under red lights.",
+					image: "sc3.jpg",
+					thumbs: ["sc1logo.jpg", "sc3.jpg", "sc1logo.jpg", "sc3.jpg"],
+					slug: "breakout-series",
+				},
+
+			];
+
+			function EventGallerySection(event, index) {
+				const side = index % 2 === 0 ? "left" : "right";
+				const thumbs = event.thumbs
+					.map(
+						(src, thumbIndex) =>
+							`<div class="event-thumb"><img src="${src}" alt="${event.title} thumbnail ${thumbIndex + 1}" loading="lazy" /></div>`
+					)
+					.join("");
+
+				return `
+				<section class="event-gallery-section" data-side="${side}">
+					<div class="event-hero-media">
+						<img src="${event.image}" alt="${event.title} featured image" />
+					</div>
+					<div class="event-overlay" aria-hidden="true"></div>
+					<div class="event-content">
+						<p class="event-kicker">.</p>
+						<h2 class="event-title">${event.title}</h2>
+						<ul class="event-meta" aria-label="Event details">
+							<li>${event.date}</li>
+							<li>${event.photos} Photos</li>
+						</ul>
+						<a class="event-cta" href="event-gallery.html?event=${event.slug}">View Gallery</a>
+					</div>
+					<div class="event-thumbs" aria-hidden="true">${thumbs}</div>
+				</section>
+				`;
+			}
+
+			const galleryRoot = document.querySelector(".gallery-main");
+			if (galleryRoot) {
+				galleryRoot.innerHTML = events.map(EventGallerySection).join("");
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							entry.target.classList.toggle("is-visible", entry.isIntersecting);
+						});
+					},
+					{ threshold: 0.35 }
+				);
+
+				document.querySelectorAll(".event-gallery-section").forEach((section) => observer.observe(section));
+
+				const siteHeader = document.querySelector(".site-header");
+				const desktopQuery = window.matchMedia("(min-width: 761px)");
+
+				const syncHeaderState = () => {
+					if (!(siteHeader instanceof HTMLElement)) {
+						return;
+					}
+
+					if (!desktopQuery.matches) {
+						siteHeader.classList.remove("is-scrolled");
+						return;
+					}
+
+					siteHeader.classList.toggle("is-scrolled", galleryRoot.scrollTop > 24);
+				};
+
+				syncHeaderState();
+				galleryRoot.addEventListener("scroll", syncHeaderState, { passive: true });
+				window.addEventListener("resize", syncHeaderState);
+
+			}
+		</script>
